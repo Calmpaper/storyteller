@@ -1,0 +1,78 @@
+datasource db {
+  provider = "sqlite"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  experimentalFeatures = ["connectOrCreate"]
+}
+
+model User {
+  id             Int     @id @default(autoincrement())
+  email          String  @unique
+}
+
+model Story {
+  id             Int        @id @default(autoincrement())
+  title          String
+  slug           String
+  chapters       Chapter[]
+  author         User?      @relation("UserStoryAuthor", fields: [authorEmail], references: [email])
+  authorEmail    String?
+
+  @@unique([authorEmail, slug])
+}
+
+model Chapter {
+  id             Int     @id @default(autoincrement())
+  title          String
+  slug           String
+  events         Event[]
+  author         User?      @relation("UserChapterAuthor", fields: [authorEmail], references: [email])
+  authorEmail    String?
+
+  @@unique([authorEmail, slug])
+}
+
+model Character {
+  id             Int     @id @default(autoincrement())
+  name           String
+  slug           String
+  stories        Story[]
+  events         Event[]
+  traits         Trait[]
+  author         User?      @relation("UserCharacterAuthor", fields: [authorEmail], references: [email])
+  authorEmail    String?
+
+  @@unique([authorEmail, slug])
+}
+
+model Trait {
+  id             Int     @id @default(autoincrement())
+  key            String
+  value          String
+  character      Character?
+  entity         Entity?
+}
+
+model Event {
+  id              Int     @id @default(autoincrement())
+  title           String
+  characters      Character[]
+  chapter         Chapter
+}
+
+model Entity {
+  id             Int     @id @default(autoincrement())
+  name           String
+  slug           String
+  stories        Story[]
+  events         Event[]
+  traits         Trait[]
+  author         User?      @relation("UserEntityAuthor", fields: [authorEmail], references: [email])
+  authorEmail    String?
+
+  @@unique([authorEmail, slug])
+}
+
