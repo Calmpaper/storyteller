@@ -1,0 +1,83 @@
+.mentions {
+  margin: 1em 0;
+}
+
+.mentions--singleLine .mentions__control {
+  display: inline-block;
+  width: 130px;
+}
+.mentions--singleLine .mentions__highlighter {
+  padding: 1px;
+  border: 2px inset transparent;
+}
+.mentions--singleLine .mentions__input {
+  border: 2px inset;
+}
+
+.mentions--multiLine {
+  width: 100%;
+}
+.mentions__input::placeholder {
+  color: #a4abb4;
+}
+
+.mentions--multiLine .mentions__control {
+  font-size: 18px;
+}
+.mentions--multiLine .mentions__highlighter {
+  border: 1px solid transparent;
+  padding: 0px;
+  min-height: 63px;
+}
+.mentions--multiLine .mentions__input {
+  border: 1px solid transparent;
+  padding: 0px;
+  outline: none;
+  font-size: 18px;
+}
+
+.mentions__suggestions__list {
+  min-width: 350px;
+  margin-top: 40px;
+  margin-bottom: 31px;
+  padding: 6px 0px 8px;
+  flex-direction: column;
+  border-style: solid none none;
+  border-width: 5px 1px 1px;
+  border-color: rgba(4, 24, 48, 0.25);
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 6px 7px 0 rgba(0, 0, 0, 0.13);
+  transform: scale3d(1none, 1none, 1none);
+  transform-style: preserve-3d;
+}
+
+.mentions__suggestions__item {
+  display: flex;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding: 10px 20px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.mentions__suggestions__item--focused {
+  background-color: #6414db;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.11);
+  color: #fff;
+}
+
+.mentions__mention {
+  position: relative;
+  z-index: 1;
+  color: #6414db;
+  text-shadow: 1px 1px 1px white, 1px -1px 1px white, -1px 1px 1px white,
+    -1px -1px 1px white;
+  pointer-events: none;
+  font-weight: 600;
+}
